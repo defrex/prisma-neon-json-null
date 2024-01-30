@@ -1,0 +1,20 @@
+{
+  "name": "prisma-neon-json-null",
+  "scripts": {
+    "repro": "ts-node src/repro.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.11",
+    "@types/ws": "^8.5.10",
+    "prisma": "^5.9.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.1",
+    "@neondatabase/serverless": "^0.7.2",
+    "@prisma/adapter-neon": "^5.9.0",
+    "@prisma/client": "^5.9.0",
+    "ws": "^8.16.0"
+  }
+}
