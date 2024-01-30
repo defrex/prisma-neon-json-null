@@ -14,7 +14,7 @@ const pool = new Pool({ connectionString });
 const adapter = new PrismaNeon(pool);
 const neonPrisma = new PrismaClient({ adapter });
 
-const rawPrisma = new PrismaClient();
+const defaultPrisma = new PrismaClient();
 
 async function main() {
   const input = {
@@ -22,7 +22,7 @@ async function main() {
     isNull: null,
   };
 
-  const rawExample = await rawPrisma.example.create({
+  const defaultExample = await defaultPrisma.example.create({
     data: { data: input },
   });
 
@@ -33,7 +33,7 @@ async function main() {
   console.log(
     inspect(
       {
-        rawPrisma: { input: input, output: rawExample.data },
+        defaultPrisma: { input: input, output: defaultExample.data },
         neonPrisma: { input: input, output: neonExample.data },
       },
       { depth: null }
@@ -43,11 +43,11 @@ async function main() {
 
 main()
   .then(async () => {
-    await rawPrisma.$disconnect();
+    await defaultPrisma.$disconnect();
     process.exit(0);
   })
   .catch(async (e) => {
     console.error(e);
-    await rawPrisma.$disconnect();
+    await defaultPrisma.$disconnect();
     process.exit(1);
   });
